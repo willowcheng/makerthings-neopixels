@@ -9,7 +9,7 @@ from neopixel import *
 
 
 # LED strip configuration:
-LED_COUNT      = 60      # Number of LED pixels.
+LED_COUNT      = 120      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (must support PWM!).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 5       # DMA channel to use for generating signal (try 5)
@@ -49,9 +49,10 @@ def wheel(pos):
 
 def rainbow(strip, wait_ms=20, iterations=1):
 	"""Draw rainbow that fades across all pixels at once."""
+	#color = 0, 255, 0
 	for j in range(256*iterations):
-		for i in range(strip.numPixels()):
-			strip.setPixelColor(i, wheel((i+j) & 255))
+		for i in range(strip.numPixels()):    #Color(0, 255, 0)
+			strip.setPixelColor(i, wheel((j) & 255))
 		strip.show()
 		time.sleep(wait_ms/1000.0)
 
@@ -85,14 +86,15 @@ if __name__ == '__main__':
 	print 'Press Ctrl-C to quit.'
 	while True:
 		# Color wipe animations.
-		colorWipe(strip, Color(255, 0, 0))  # Red wipe
-		colorWipe(strip, Color(0, 255, 0))  # Blue wipe
-		colorWipe(strip, Color(0, 0, 255))  # Green wipe
+		#colorWipe(strip, Color(255, 0, 0))  # Red wipe
+		#colorWipe(strip, Color(0, 255, 0))  # Blue wipe
+		#colorWipe(strip, Color(0, 0, 255))  # Green wipe
 		# Theater chase animations.
-		theaterChase(strip, Color(127, 127, 127))  # White theater chase
-		theaterChase(strip, Color(127,   0,   0))  # Red theater chase
-		theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
+		#theaterChase(strip, Color(127, 127, 127))  # White theater chase
+		#theaterChase(strip, Color(127,   0,   0))  # Red theater chase
+		#theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
 		# Rainbow animations.
 		rainbow(strip)
-		rainbowCycle(strip)
-		theaterChaseRainbow(strip)
+		#rainbowCycle(strip)
+		#theaterChaseRainbow(strip)
+		#wheel(60)
